@@ -66,6 +66,10 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
+
+    # my apps
+    'clients',
+    'apis',
 ]
 
 MIDDLEWARE = [
@@ -192,15 +196,15 @@ LOGOUT_ON_PASSWORD_CHANGE = False
 REST_SESSION_LOGIN = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_SIGNUP_FORM_CLASS = 'client.forms.SignupForm'
+ACCOUNT_SIGNUP_FORM_CLASS = 'clients.forms.SignupForm'
 
 # Django-rest-auth setting
 REST_USE_JWT = True
 JWT_AUTH_COOKIE = 'core-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'core-refresh-token'
 
-REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'api.serializers.CustomSignupSerializer',
+REST_AUTH = {
+    'REGISTER_SERIALIZER': 'apis.serializers.CustomSignupSerializer',
 }
 
 # Django-rest_framework settings

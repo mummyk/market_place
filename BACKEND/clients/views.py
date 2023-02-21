@@ -15,10 +15,6 @@ from .forms import ClientInfoForm
 def profiles(request):
     referral_code = ''
     try:
-        referral_code = ReferralModel.objects.all()
-        referral_code = referral_code.get(user=request.user).code
-        referral_code = f'{settings.ALLOWED_HOSTS[0]}/{referral_code}'
-
         # get email verified
         if EmailAddress.objects.filter(user=request.user, verified=True).exists():
             verified = True

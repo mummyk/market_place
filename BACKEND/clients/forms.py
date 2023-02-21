@@ -1,5 +1,6 @@
 from django import forms
 from .models import UserInfoModel
+from django_countries.widgets import CountrySelectWidget
 from django.utils.translation import gettext as _
 
 
@@ -37,9 +38,7 @@ class ClientInfoForm(forms.ModelForm):
         model = UserInfoModel
         fields = ['phone_number', 'date_of_birth',
                   'gender', 'address', 'country', 'state', 'city']
-        widgets = {
-            'country': forms.Select(attrs={'class': 'title flex-1 w-full p-4 my-4 bg-white rounded-xl'})
-        }
+        widgets = {'country': CountrySelectWidget(attrs={'class': 'p-2'})}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
